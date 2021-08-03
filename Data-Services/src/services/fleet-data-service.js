@@ -30,11 +30,11 @@ export class FleetDataService {
                     }
                     break;
                 case 'drone':
-                    if (this.validateDroneData(data))  {
+                    if (this.validateDroneData(data)) {
                         let drone = this.loadCDrone(data)
                         if (drone) {
                             this.drones.push(drone);
-                        }                        
+                        }
                     }
                     break;
                 default:
@@ -77,6 +77,23 @@ export class FleetDataService {
         return !hasErrors;
     }
 
+    getCarByLicense(license) {
+        return this.cars.find(function (car) {
+            return car.license === license;
+        })
+    }
+
+    getCarsSortedByLicense() {
+        return this.cars.sort(function (car1, car2) {
+            if (car1.license < car2.license)
+                return -1;
+            if (car1.license > car2.license)
+                return 1;
+            return 0;
+
+        });
+    }
+
     loadCDrone(drone) {
         try {
             let d = new Drone(drone.license, drone.model, drone.latlong);
@@ -105,4 +122,22 @@ export class FleetDataService {
         }
         return !hasErrors;
     }
+
+    getDroneByLicense(license) {
+        return this.drones.find(function (drone) {
+            return drone.license === license;
+        })
+    }
+
+    getDronesSortedByLicense() {
+        return this.drones.sort(function (drone1, drone2) {
+            if (drone1.license < drone2.license)
+                return -1;
+            if (drone1.license > drone2.license)
+                return 1;
+            return 0;
+
+        });
+    }
+
 }
