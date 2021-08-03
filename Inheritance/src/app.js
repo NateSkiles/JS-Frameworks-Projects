@@ -25,10 +25,12 @@ class Car extends Vehicle {
     }
     // Methods
     start() {
+        // When calling a method from a super class, you must call the method from super.method()
         super.start();
         console.log('starting Car');
     }
     static getCompanyName() {
+        // Must call static methods via the class object, not the instance of that class
         super.getCompanyName();
         console.log('My Other Company');
     }
