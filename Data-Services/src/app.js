@@ -18,11 +18,20 @@ dataService.loadData(fleet);
 //     console.log(e);
 // }
 
+
+
 // let car = dataService.getCarByLicense('AT9900');
 // let cars = dataService.getCarsSortedByLicense(); 
 // for (let car of cars)
 //     console.log(car.license);
 
-let drones = dataService.getDronesSortedByLicense(); 
-for (let drone of drones)
-    console.log(drone.license);
+// let drones = dataService.getDronesSortedByLicense(); 
+// for (let drone of drones)
+//     console.log(drone.license);
+
+
+
+let cars = dataService.filterCarsByMake('U');
+
+for (let car of cars)
+    console.log(car.make);

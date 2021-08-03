@@ -94,6 +94,10 @@ export class FleetDataService {
         });
     }
 
+    filterCarsByMake(filter) {
+        return this.cars.filter(car => car.make.indexOf(filter) >= 0);
+    }
+
     loadCDrone(drone) {
         try {
             let d = new Drone(drone.license, drone.model, drone.latlong);
