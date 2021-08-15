@@ -16,4 +16,8 @@ export class BaseElement {
         let s = this.getElementString();
         this.element = $(s);
     }
+
+    enableJS() {
+        componentHandler.upgradeElement(this.element[0]);
+    }
 }
