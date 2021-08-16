@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from '../node_modules/jquery/dist/jquery.js';
 import {Car} from './classes/car.js';
 import {Drone} from './classes/drone.js';
 import {fleet} from './fleet-data.js';
@@ -7,11 +7,12 @@ import {Button} from './ui/button.js';
 import {Image} from './ui/image.js'
 import {TitleBar} from './ui/title-bar.js';
 import {DataTable} from './ui/data-table.js';
+import {GoogleMap} from './ui/google-maps.js';
 
-let headers = 'License Make Model Miles'.split(' ');
 let dataService = new FleetDataService(fleet); 
 dataService.loadData(fleet);
 
-let dt = new DataTable(headers, dataService.cars);
+let centerOfMap = {lat: 40.783661, lng: -73.965883};
+let map = new GoogleMap(centerOfMap, dataService.drones);
 
-dt.appendToElement($('body'));
+map.appendToElement($('body'));
